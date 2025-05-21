@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Página Personal</title>
+
+<style>
+  body{
+      font-family: sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding-top: 100px;
+      margin: 0;
+    }
+    #menu-principal {
+      background: linear-gradient(to right,#0077cc,#00aaff);
+      text-align: center;
+      padding: 10px 0;
+      position: fixed; 
+      top: 0;            
+      width: 100%;  
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .barra-contenido {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    #menu-principal.shrink {
+      padding: 5px 20px;
+      background-color: #005fa3;
+    } 
+    
+    .menu-links a {
+      color: #333;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .menu-links a:hover {
+      text-decoration: underline;
+    }
+
+    .logo-temporal {
+  display: inline-block;
+  background: linear-gradient(to right, #0077cc, #00aaff);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin-right: 10px;
+}
+   
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeInUp {
+      from{
+        opacity: 0;
+        transform: translateY(20px);/*Comienza debajo de la vista*/
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0); /*Termina en su posición original */
+      }
+    }
+    section {
+      animation: fadeInUp 1s ease-in-out; /*Aplica animación a cada sección */
+      margin-bottom: 30px;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: #0077cc;
+    }
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(to bottom right, #ffffff, #f2f2f2 );
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.foto {
+  border: none;            /* 👈 Quita cualquier borde */
+  box-shadow: none;        /* 👈 Quita efectos de sombra que parecen bordes */
+  border-radius: 50%;      /* 👈 Para que quede circular */
+  width: 100%;
+  max-width: 130px;        /* Tamaño maximo para escritorio */
+  height: auto;
+  aspect-ratio: 1 / 1;     /*Mantiene forma cuadrada */
+  object-fit: cover;
+}
+
+.nombre {
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+.descripcion {
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.boton {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.boton:hover {
+  background-color: #005fa3;
+}
+
+@media (max-width: 600px) {
+  .nombre {
+    font-size: 1.5em;
+  }
+
+  .foto {
+    width: 120px;
+    height: 120px;
+  }
+}
+  .habilidad {
+  margin: 40px auto;
+  max-width: 600px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.habilidad:hover {
+  transform: translateY(-5px);
+}
+
+.lista-habilidades {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-habilidades li {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  margin: 12px 0;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.lista-habilidades li i {
+  font-size: 1.3em;
+  margin-right: 12px;
+  color: #0077cc;
+}
+
+.lista-habilidades li:hover {
+  background-color: #0077cc;
+  color: white;
+}
+
+.lista-habilidades li:hover i {
+  color: white;
+}
+
+.proyecto {
+  animation: fadeInUp 1.5s ease-in-out;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /*Agregamos transiciones para box-shadow también */
+}
+
+.proyecto:hover {
+  transform: scale(1.05);/*Un poco más de escalado*/
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);/*Sombra más prominente*/
+}
+
+.proyecto h3 {
+  margin-top: 0;
+  color: #0077cc;
+}
+
+.proyecto p {
+  color: #444;
+  margin-bottom: 15px;
+}
+#mensaje-bienvenida {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #0077cc;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+  opacity: 0;
+  animation: aparecer 1s forwards, desaparecer 1s forwards 5s;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes desaparecer {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #f2f2f2;
+}
+
+/*Contenedor Genreal*/
+  body.dark-mode .container {
+    background: linear-gradient(to bottom right, #1e1e1e, #2c2c2c);
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+/*Botones*/
+body.dark-mode .boton {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .boton:hover {
+  background-color: #555;
+}
+
+/*Menú*/
+body.dark-mode .menu-links a {
+  color: #e0e0e0;
+}
+
+body.dark-mode  #menu-principal {
+  background: linear-gradient(to right, #222, #444);
+}
+
+/* Sección de Habilidades */
+
+body.dark-mode .habilidad {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+body.dark-mode .lista-habilidades li {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .lista-habilidades li:hover {
+background-color: #0077cc;
+color: white;
+}
+body.dark-mode .lista-habilidades li:hover i {
+  color: white;
+}
+
+
+/* Proyectos */
+body.dark-mode .proyecto {
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+}
+
+body.dark-mode .proyecto h3 {
+  color: #00aaff;
+}
+
+body.dark-mode .proyecto p {
+  color: #cccccc;
+}
+
+body.dark-mode .container p {
+  color: #cccccc;
+}
+.parallax {
+  background-image: url('https://th.bing.com/th/id/OIP.lNnp29kR1QX2RQOPj7lESgHaEK?w=302&h=180&c=7&r=0&o=7&cb=iwp1&pid=1.7&rm=3'); /* Puedes cambiar la URL */
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax::before{
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.4); /* oscurece el fondo */
+}
+.parallax {
+  position: relative;
+  overflow: hidden;
+}
+#frase-dia blockquote {
+  font-style: italic;
+  font-size: 1.2em;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+#frase-dia p {
+  font-weight: bold;
+  color: #0077cc;
+}
+</style>
+  <!-- AOS CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+  </head>
+  <body>
+      <header id="menu-principal">
+        <div class="barra-contenido">
+          <div class="logo-temporal">HM</div>
+          <nav class="menu-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#habilidades">Habilidades</a>
+            <a href="#proyectos">Proyectos</a>
+          </nav>
+        </div>
+      </header>
+
+      <div id="mensaje-bienvenida">¡Bienvenido, Soy Henry! Gracias por visitar mi sitio.</div>
+
+      <button onclick="toggleDarkMode()" class="boton">Modo Oscuro</button>
+
+    <div class="container" id="inicio">
+      <img class="foto" src="C:\Users\PC\Desktop\Learn\Desarrollo web IA\Imagen1.jpg" alt="Mi foto" />
+      <div class="nombre">Henry Andrés Moreira Mendoza</div>
+      <p class="descripcion">Soy Henry y estoy aprendiendo a crear sitios web. ¡Este es mi primer proyecto!</p>
+      <a class="boton" href="https://www.facebook.com/Henry.Moreira.M" target="_blank">Facebook</a>
+      <a class="boton" href="https://twitter.com" target="_blank">Twitter</a>
+      <a class="boton" href="https://instagram.com" target="_blank">Instagram</a>
+    </div>
+    <div class="parallax"></div>
+    <div class="container" id="sobre-mi">
+      <section data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1000">
+          <h2>Sobre mí</h2>
+          <p>¡Hola! Me llamo Henry Moreira y estoy aprendiendo desarrollo web por diversión y curiosidad. Me gusta la tecnología, el diseño y los proyectos creativos. 😄</p>
+        </section>
+      </div>
+
+      <div class="container" id="proyectos">
+        <section>
+          <h2>Proyectos</h2>
+      
+          <div class="proyecto">
+            <h3>Mi primera página HTML</h3>
+            <p>Una página simple que hice para practicar HTML y CSS. Incluye una imagen, botones y enlaces.</p>
+            <a href="#" class="boton" target="_blank">Ver proyecto</a>
+          </div>
+      
+          <div class="proyecto">
+            <h3>Currículum en línea</h3>
+            <p>Un CV moderno que diseñé como página web, para mostrar mi perfil profesional.</p>
+            <a href="#" class="boton" target="_blank">Ver proyecto</a>
+          </div>
+      
+          <div class="proyecto">
+            <h3>Diseño con Canva</h3>
+            <p>Una colección de diseños gráficos hechos en Canva para redes sociales y presentaciones.</p>
+            <a href="#" class="boton" target="_blank">Ver proyecto</a>
+          </div>
+        </section>
+      </div>
+
+      <div class="container" id="contacto">
+        <section>
+          <h2>Contacto</h2>
+          <p>Puedes escribirme a: <strong>andymar0919@email.com</strong></p>
+          <p>Whatsapp <strong>0963873677</strong></p>
+        </section>
+      </div>
+
+      <div class="container" id="habilidades">
+        <section>
+          <h2>Habilidades</h2>
+          <ul class="lista-habilidades">
+            <li><i class="fas fa-code"></i>HTML</li>
+            <li><i class="fas fa-paint-brush"></i>CSS</li>
+            <li><i class="fas fa-shield-alt"></i> Ciberseguridad</li>
+            <li><i class="fas fa-server"></i> Servidores</li>
+            <li><i class="fas fa-network-wired"></i> Redes informáticas</li>
+          </ul>
+        </section>
+      </div>
+      <div class="container" id="frase-dia">
+        <section>
+          <h2>Frase del día</h2>
+          <blockquote id="frase-texto">Cargando...</blockquote>
+          <p id="frase-autor"></p>
+        </section>
+      </div>
+      <script>
+        window.addEventListener("scroll", function () {
+          const header = document.getElementById("menu-principal");
+          header.classList.toggle("shrink", window.scrollY >50);
+        });
+        window.addEventListener("load", function () {
+  const mensaje = document.getElementById("mensaje-bienvenida");
+  setTimeout(() => {
+    mensaje.style.display = "none";
+  }, 7000); // lo oculta después de 7 segundos
+});
+function toggleDarkMode(){
+  document.body.classList.toggle("dark-mode");
+}
+fetch('https://api.quotable.io/random')
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("frase-texto").textContent = `"${data.content}"`;
+    document.getElementById("frase-autor").textContent = `- ${data.author}`;
+  })
+.catch(error => {
+  document.getElementById("frase-texto").textContent = "No se pudo cargar la frase.";
+  console.error("Error al obtener la frase:",error);
+});
+</script>
+<!-- AOS JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+  </body>
+</html>
